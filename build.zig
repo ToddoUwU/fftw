@@ -26,8 +26,8 @@ pub fn build(b: *std.Build) void {
     const is_x86 = target.result.cpu.arch == .x86_64;
     const is_aarch64 = target.result.cpu.arch == .aarch64;
 
-    const strip = b.option(bool, "strip", "Enable debug symbol stripping (default true if ReleaseFast else false)") orelse
-        (optimize == .ReleaseFast);
+    const strip = b.option(bool, "strip", "Enable debug symbol stripping (default true if fast else false)") orelse
+        (optimize == .fast);
     const pic = b.option(bool, "pic", "Enable PIC (position independent code) (default true)") orelse true;
 
     const use_sse2 = b.option(bool, "enable-sse2", "Enable SSE2 optimizations (default CPU target)") orelse
